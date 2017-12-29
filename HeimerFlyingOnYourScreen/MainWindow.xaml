@@ -30,8 +30,9 @@
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Spawn interval (in seconds) : "/>
-                                <ComboBox HorizontalAlignment="Center" SelectedIndex="4" SelectionChanged="ComboBox_SelectionChanged">
+                                <ComboBox HorizontalAlignment="Center" SelectedIndex="5" SelectionChanged="ComboBox_SelectionChanged">
                                     <ComboBox.Items>
+                                        <sys:Decimal>0.05</sys:Decimal>
                                         <sys:Decimal>0.5</sys:Decimal>
                                         <sys:Decimal>1</sys:Decimal>
                                         <sys:Decimal>2</sys:Decimal>

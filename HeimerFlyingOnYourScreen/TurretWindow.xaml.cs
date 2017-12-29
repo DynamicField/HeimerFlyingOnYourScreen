@@ -27,10 +27,12 @@ namespace HeimerFlyingOnYourScreen
             Player.Open(new Uri(path, UriKind.Relative));
             Player.Play();
             Opacity = 0;
-            InitializeComponent();          
+            InitializeComponent();
+            Top = Randomiser.Next(100, (int)SystemParameters.PrimaryScreenHeight - 100);
+            Left = Randomiser.Next(100, (int)SystemParameters.PrimaryScreenWidth - 100);
         }
         private MediaPlayer Player = new MediaPlayer();
-        private Random Randomiser = new Random();
+        private Random Randomiser = new Random(DateTime.Now.Millisecond);
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {

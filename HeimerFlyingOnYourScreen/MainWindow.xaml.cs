@@ -135,6 +135,12 @@ namespace HeimerFlyingOnYourScreen
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var source = (TextBox)sender;
+            if (source.Text == String.Empty)
+            {
+                source.Text = "3";
+                TurretsLimit = 3;
+                return;
+            }
             string newString = String.Empty;
             foreach (var item in source.Text)
             {
