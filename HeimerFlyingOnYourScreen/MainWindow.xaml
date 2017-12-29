@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HeimerFlyingOnYourScreen"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Heimerdinger"
         WindowStartupLocation="CenterScreen" Style="{StaticResource EntityWindow}">
     <Grid>
         <Image Source="HeimerImages/Classic/Classic.png" Stretch="Uniform" StretchDirection="DownOnly" 

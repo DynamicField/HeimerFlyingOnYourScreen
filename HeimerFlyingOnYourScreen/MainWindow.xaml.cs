@@ -115,11 +115,21 @@ namespace HeimerFlyingOnYourScreen
         private void TopMostMenuItem_Checked(object sender, RoutedEventArgs e)
         {
             Topmost = true;
+            ChangeTurretTopMost(true);
         }
 
         private void TopMostMenuItem_Unchecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;
+            ChangeTurretTopMost(false);
+        }
+
+        private void ChangeTurretTopMost(bool state)
+        {
+            foreach (var item in Turrets)
+            {
+                item.Topmost = state;
+            }
         }
 
         private void SpawnTurretsMenuItem_Checked(object sender, RoutedEventArgs e)

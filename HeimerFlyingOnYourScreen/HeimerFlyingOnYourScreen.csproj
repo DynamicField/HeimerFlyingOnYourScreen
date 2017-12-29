@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>294873165371408385.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -108,6 +111,7 @@
     <Resource Include="HeimerImages\Snowmerdinger\Snowmerdinger.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="294873165371408385.ico" />
     <Content Include="Sounds\Turret\TurretPlaced1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

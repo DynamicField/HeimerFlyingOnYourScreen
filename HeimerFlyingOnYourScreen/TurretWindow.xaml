@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HeimerFlyingOnYourScreen"
         mc:Ignorable="d"
-        Title="Turret" Style="{StaticResource EntityWindow}">
+        Title="Turret" Style="{StaticResource EntityWindow}" ShowInTaskbar="False">
     <Grid>
         <Image Source="HeimerImages/Classic/ClassicTurret.png" Stretch="Uniform" StretchDirection="DownOnly" MaxHeight="64" MaxWidth="64"
                MouseDown="Image_MouseDown">
