@@ -13,5 +13,16 @@ namespace HeimerFlyingOnYourScreen
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var w = new UnhandledExceptionWindow(e.ExceptionObject as Exception);
+            w.ShowDialog();
+            Environment.Exit(1);
+        }
     }
 }

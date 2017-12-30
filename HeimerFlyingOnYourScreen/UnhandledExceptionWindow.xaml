@@ -1,0 +1,46 @@
+﻿<Window x:Class="HeimerFlyingOnYourScreen.UnhandledExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeimerFlyingOnYourScreen"
+        mc:Ignorable="d"
+        Title="UnhandledExceptionWindow" Height="312.712" Width="484.322">
+    <Grid Margin="0,15,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="78*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="193*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="MiscImages/Error.png" VerticalAlignment="Top" HorizontalAlignment="Right" MaxHeight="64" Margin="10,0"/>
+            <DockPanel Grid.Column="1" Margin="10,0">
+                <TextBlock TextWrapping="Wrap" DockPanel.Dock="Top">
+                Well... Looks like Heimerdinger failed his formulas and somewhat crashed the app. But : "Don't worry ! 
+                You can learn so much from failure !" as he said. 
+                So, here is what caused the problem 
+                (you might also report this issue on 
+                <Hyperlink Hyperlink.RequestNavigate="Hyperlink_RequestNavigate" 
+                           NavigateUri="https://github.com/jeuxjeux20/HeimerFlyingOnYourScreen/issues">Github</Hyperlink>) :
+                </TextBlock>
+                <RichTextBox IsReadOnly="True" DockPanel.Dock="Bottom" Margin="0,10" VerticalScrollBarVisibility="Auto" >
+                    <FlowDocument>
+                        <Paragraph x:Name="messageParagraph">
+                            Object not set to a reference of an object.
+                        </Paragraph>
+                        <Paragraph x:Name="stackTraceParagraph" FontFamily="Consolas,Segoe UI">
+                            Stack trace :
+                            <Run x:Name="stackTraceInnerRun"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFDADADA">
+            <Button Content="OK" Margin="5" Width="80" HorizontalAlignment="Right" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Heimerdinger"
         WindowStartupLocation="CenterScreen" Style="{StaticResource EntityWindow}"
-        d:DataContext="{d:DesignData local:MainWindow}">
+        d:DataContext="{d:DesignInstance local:MainWindow}">
     <Grid>
         <Image Source="HeimerImages/Classic/Classic.png" Stretch="Uniform" StretchDirection="DownOnly" 
                MaxWidth="256" MaxHeight="256" MouseDown="Image_MouseDown">
@@ -52,7 +52,7 @@
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Volume: "/>
-                                <Slider Maximum="1" SmallChange="0.01" Minimum="0" Value="0.2" Width="100" ValueChanged="Slider_ValueChanged"/>
+                                <Slider Maximum="1" SmallChange="0.01" Minimum="0" Value="{Binding Volume}" Width="100" />
                             </StackPanel>
                         </MenuItem.Header>
                     </MenuItem>

@@ -79,11 +79,26 @@ namespace HeimerFlyingOnYourScreen
             set { interval = value * 1000; TurretTimer.Interval = (double)interval; }
         }
 
-        public bool TurretSpawnState
+        public double Volume
         {
-            get;
-            set; // For debugging purposes
-        } = true;
+            get
+            {
+                return Player.Volume;
+            }
+            set
+            {
+                if (Volume >= 0 && Volume <= 1.0)
+                {
+                    Player.Volume = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value),value,"Volume cannot be higher than 1.0 or lower than 0. Sorry for the inconvience. BUT YOU ARE DUMBBBBBBBBBBBBBBBBB");
+                }
+            }
+        }
+
+        public bool TurretSpawnState { get; set; } = true;
 
         private MediaPlayer Player { get; set; } = new MediaPlayer();
         #endregion
@@ -136,7 +151,7 @@ namespace HeimerFlyingOnYourScreen
                 item.Topmost = state;
             }
         }
-        
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var source = (TextBox)sender;
@@ -198,6 +213,6 @@ namespace HeimerFlyingOnYourScreen
             if (TurretSpawnState)
                 TurretTimer.Start();
         }
-#endregion
+        #endregion
     }
 }

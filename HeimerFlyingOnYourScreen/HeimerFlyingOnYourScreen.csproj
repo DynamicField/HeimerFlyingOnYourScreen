@@ -60,6 +60,9 @@
     <Compile Include="TurretWindow.xaml.cs">
       <DependentUpon>TurretWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UnhandledExceptionWindow.xaml.cs">
+      <DependentUpon>UnhandledExceptionWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +76,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TurretWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UnhandledExceptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="294873165371408385.ico" />
+    <Resource Include="MiscImages\Error.png" />
     <Content Include="Sounds\Turret\TurretPlaced1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
