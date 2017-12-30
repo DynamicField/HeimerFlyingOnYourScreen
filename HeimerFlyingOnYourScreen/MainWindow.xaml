@@ -7,7 +7,8 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Heimerdinger"
-        WindowStartupLocation="CenterScreen" Style="{StaticResource EntityWindow}">
+        WindowStartupLocation="CenterScreen" Style="{StaticResource EntityWindow}"
+        d:DataContext="{d:DesignData local:MainWindow}">
     <Grid>
         <Image Source="HeimerImages/Classic/Classic.png" Stretch="Uniform" StretchDirection="DownOnly" 
                MaxWidth="256" MaxHeight="256" MouseDown="Image_MouseDown">
@@ -16,7 +17,7 @@
                     <MenuItem Header="Close" Click="CloseMenuItem_Click"/>
                     <Separator/>
                     <MenuItem Header="Top most" IsChecked="True" Checked="TopMostMenuItem_Checked" Unchecked="TopMostMenuItem_Unchecked" IsCheckable="True"/>
-                    <MenuItem Header="Spawn turrets" IsChecked="True" Checked="SpawnTurretsMenuItem_Checked" Unchecked="SpawnTurretsMenuItem_Unchecked" IsCheckable="True"/>
+                    <MenuItem Header="Spawn turrets" IsChecked="{Binding TurretSpawnState}" IsCheckable="True"/>
                     <Separator/>
                     <MenuItem>
                         <MenuItem.Header>

@@ -46,7 +46,7 @@ namespace HeimerFlyingOnYourScreen
                 item.Close();
             }
         }
-
+        #region Fields and properties
         private bool finalClose = false;
 
         private int turretsLimit = 3;
@@ -67,6 +67,32 @@ namespace HeimerFlyingOnYourScreen
             }
         }
 
+        private List<TurretWindow> Turrets { get; set; } = new List<TurretWindow>();
+
+        private System.Timers.Timer TurretTimer;
+
+        private decimal interval = 15000;
+
+        public decimal Interval
+        {
+            get { return interval; }
+            set { interval = value * 1000; TurretTimer.Interval = (double)interval; }
+        }
+
+        public bool TurretSpawnState
+        {
+            get;
+            set; // For debugging purposes
+        } = true;
+
+        private MediaPlayer Player { get; set; } = new MediaPlayer();
+        #endregion
+        #region Functions and Events
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
 
         private void TurretTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -78,33 +104,12 @@ namespace HeimerFlyingOnYourScreen
                     t.Closed += (secondSender, eventArgs) =>
                     {
                         if (!finalClose)
-                        Turrets.Remove((TurretWindow)secondSender);
+                            Turrets.Remove((TurretWindow)secondSender);
                     };
                     Turrets.Add(t);
                     t.Show();
                 }
             });
-        }
-
-        private List<TurretWindow> Turrets { get; set; } = new List<TurretWindow>();
-
-        private System.Timers.Timer TurretTimer;
-
-        private decimal interval = 15000;
-
-        public decimal Interval
-        {
-            get { return interval; }
-            set { interval = value; TurretTimer.Interval = (double)interval; }
-        }
-
-
-        private MediaPlayer Player { get; set; } = new MediaPlayer();
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                DragMove();
         }
 
         private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
@@ -174,7 +179,7 @@ namespace HeimerFlyingOnYourScreen
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var s = (ComboBox)sender;
-            Interval = ((s.SelectedItem as decimal?) * 1000) ?? 15000;
+            Interval = (s.SelectedItem as decimal?) ?? 15000;
         }
 
         private void CloseAllTurretsMenuItem_Click(object sender, RoutedEventArgs e)
@@ -200,7 +205,9 @@ namespace HeimerFlyingOnYourScreen
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
-            TurretTimer.Start();
+            if (TurretSpawnState)
+                TurretTimer.Start();
         }
+#endregion
     }
 }
