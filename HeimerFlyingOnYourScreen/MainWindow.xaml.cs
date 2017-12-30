@@ -136,17 +136,7 @@ namespace HeimerFlyingOnYourScreen
                 item.Topmost = state;
             }
         }
-
-        private void SpawnTurretsMenuItem_Checked(object sender, RoutedEventArgs e)
-        {
-            TurretTimer.Start();
-        }
-
-        private void SpawnTurretsMenuItem_Unchecked(object sender, RoutedEventArgs e)
-        {
-            TurretTimer.Stop();
-        }       
-
+        
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var source = (TextBox)sender;
