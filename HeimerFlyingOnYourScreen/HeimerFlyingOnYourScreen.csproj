@@ -57,6 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExclusiveMenuItem.cs" />
+    <Compile Include="ResourceData.cs" />
     <Compile Include="TurretWindow.xaml.cs">
       <DependentUpon>TurretWindow.xaml</DependentUpon>
     </Compile>
@@ -120,6 +122,10 @@
   <ItemGroup>
     <Resource Include="294873165371408385.ico" />
     <Resource Include="MiscImages\Error.png" />
+    <Resource Include="HeimerImages\PiltoverHeim\PiltoverHeimTurret.png" />
+    <Resource Include="HeimerImages\ExplodingHeim\ExplodingHeimTurret.png" />
+    <Resource Include="HeimerImages\Snowmerdinger\SnowmerdingerTurret.png" />
+    <Resource Include="HeimerImages\AlienInvader\AlienInvaderTurret.png" />
     <Content Include="Sounds\Turret\TurretPlaced1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

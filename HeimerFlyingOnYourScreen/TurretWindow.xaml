@@ -8,7 +8,7 @@
         Title="Turret" Style="{StaticResource EntityWindow}" ShowInTaskbar="False">
     <Grid>
         <Image Source="HeimerImages/Classic/ClassicTurret.png" Stretch="Uniform" StretchDirection="DownOnly" MaxHeight="64" MaxWidth="64"
-               MouseDown="Image_MouseDown">
+               MouseDown="Image_MouseDown" x:Name="mainImage">
             <Image.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Close" Click="MenuItem_Click"/>

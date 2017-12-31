@@ -11,7 +11,7 @@
         d:DataContext="{d:DesignInstance local:MainWindow}">
     <Grid>
         <Image Source="HeimerImages/Classic/Classic.png" Stretch="Uniform" StretchDirection="DownOnly" 
-               MaxWidth="256" MaxHeight="256" MouseDown="Image_MouseDown">
+               MaxWidth="256" MaxHeight="256" MouseDown="Image_MouseDown" x:Name="mainImage">
             <Image.ContextMenu>
                 <ContextMenu Opened="ContextMenu_Opened" Closed="ContextMenu_Closed">
                     <MenuItem Header="Close" Click="CloseMenuItem_Click"/>
@@ -55,6 +55,18 @@
                                 <Slider Maximum="1" SmallChange="0.01" Minimum="0" Value="{Binding Volume}" Width="100" />
                             </StackPanel>
                         </MenuItem.Header>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="Skin" ItemsSource="{x:Static local:ResourceData.ImplementedSkins}" x:Name="skins">
+                        <MenuItem.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="MenuItem.Header" Value="{Binding}"/>
+                                <Setter Property="local:ExclusiveMenuItem.GroupName" Value="Skin"/>
+                                <Setter Property="MenuItem.IsCheckable" Value="True"/>
+                                <EventSetter Event="MenuItem.Loaded" Handler="SkinMenuItem_Loaded"/>
+                                <EventSetter Event="MenuItem.Checked" Handler="SkinMenuItem_Checked"/>
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
                     </MenuItem>
                     <Separator/>
                     <MenuItem Header="Close all turrets" Click="CloseAllTurretsMenuItem_Click" />

@@ -32,9 +32,11 @@ namespace HeimerFlyingOnYourScreen
             Opacity = 0;
             DataContext = this;
             InitializeComponent();
+            ResourceData.UpdateImageSource(mainImage);
             TurretTimer.Elapsed += TurretTimer_Elapsed;
             TurretTimer.Start();
             Closed += MainWindow_Closed;
+            
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
@@ -79,6 +81,8 @@ namespace HeimerFlyingOnYourScreen
             set { interval = value * 1000; TurretTimer.Interval = (double)interval; }
         }
 
+        private bool IsLoadedEvent { get; set; }
+
         public double Volume
         {
             get
@@ -103,6 +107,8 @@ namespace HeimerFlyingOnYourScreen
         private MediaPlayer Player { get; set; } = new MediaPlayer();
         #endregion
         #region Functions and Events
+
+        
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -212,6 +218,27 @@ namespace HeimerFlyingOnYourScreen
         {
             if (TurretSpawnState)
                 TurretTimer.Start();
+        }
+
+        private void SkinMenuItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            IsLoadedEvent = true;
+            var casted = (MenuItem)sender;
+            if (casted.Header.ToString() == Properties.Settings.Default.Skin)
+            {
+                casted.IsChecked = true;
+            }
+            IsLoadedEvent = false;
+        }
+        private void SkinMenuItem_Checked(object sender, RoutedEventArgs e)
+        {
+            if (IsLoadedEvent) return;
+            var casted = (MenuItem)sender;
+            ResourceData.UpdateImageSource(mainImage,casted.Header.ToString());
+            foreach (var item in Turrets)
+            {
+                ResourceData.UpdateImageSource(item.MainImage,true);
+            }
         }
         #endregion
     }

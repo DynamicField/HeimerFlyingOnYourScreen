@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using HeimerFlyingOnYourScreen.Properties;
 
 namespace HeimerFlyingOnYourScreen
 {
@@ -16,6 +17,12 @@ namespace HeimerFlyingOnYourScreen
         public App()
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Settings.Default.Upgrade();
+            if (!ResourceData.ImplementedSkins.Contains(Settings.Default.Skin))
+            {
+                Settings.Default.Skin = "Classic";
+                Settings.Default.Save();
+            }
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
